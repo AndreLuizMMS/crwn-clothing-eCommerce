@@ -1,4 +1,9 @@
+import { Outlet } from 'react-router-dom';
+
 import Directoy from '../../directory/Directory';
+
+
+
 
 const Home = () => {
   const categories = [
@@ -30,6 +35,7 @@ const Home = () => {
   ];
   return (
     <div>
+      <Outlet/>
       <Directoy categories={categories} key={categories} />
     </div>
   );

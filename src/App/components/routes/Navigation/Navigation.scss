@@ -1,0 +1,30 @@
+.navigation {
+  height: 70px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 25px;
+  gap: 65%;
+
+  .logo-container {
+    height: 100%;
+    width: 70px;
+    display: flex;
+    align-items: center;
+    padding-left: 50px;
+  }
+
+  .nav-links-container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    gap: 40px;
+
+    .nav-link {
+      padding: 10px 15px;
+      cursor: pointer;
+    }
+  }
+}

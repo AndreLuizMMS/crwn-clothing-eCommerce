@@ -2,9 +2,9 @@
   height: 70px;
   width: 100%;
   display: flex;
+  justify-content: space-between;
   align-items: center;
   margin-bottom: 25px;
-  gap: 65%;
 
   .logo-container {
     height: 100%;
@@ -15,15 +15,11 @@
   }
 
   .nav-links-container {
-    height: 100%;
-    display: flex;
     align-items: center;
-    justify-content: flex-end;
+    padding: 10px;
 
-    gap: 40px;
-
-    .nav-link {
-      padding: 10px 15px;
+    .nav-links {
+      padding-inline: 15px;
       cursor: pointer;
     }
   }

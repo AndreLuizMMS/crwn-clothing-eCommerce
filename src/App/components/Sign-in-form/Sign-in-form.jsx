@@ -2,6 +2,7 @@ import { signInWithGooglePopUp } from '../../../utils/FireBase/FireBase';
 
 const SignInForm = () => {
   const logGoogleUserPopUp = async () => {
+    console.log('cheogu');
     const { user } = await signInWithGooglePopUp();
     const userDocRef = await createUserDocFromAuth(user);
   };
@@ -21,11 +22,11 @@ const SignInForm = () => {
           <label htmlFor="password">Senha</label>
           <input type="text" name="password" />
         </div>
-        <div className="button-container">
-          <button type="submit">Entrar</button>
-          <button onClick={logGoogleUserPopUp}>Entrar com Google</button>
-        </div>
       </form>
+      <div className="button-container">
+        <button type="submit">Entrar</button>
+        <button onClick={logGoogleUserPopUp}>Entrar com Google</button>
+      </div>
     </div>
   );
 };

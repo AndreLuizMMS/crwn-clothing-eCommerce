@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import {
   createAuthUserWithEmailAndPassword,
-  auth
+  createUserDocFromAuth
 } from '../../../utils/FireBase/FireBase';
 
 import './Sin-Up-form.scss';
@@ -14,28 +14,42 @@ const defaultFormFields = {
   password: ''
 };
 
-const SignUpForm = () => {
+function SignUpForm() {
   const [formField, setFormField] = useState(defaultFormFields);
   const { displayName, email, confirmPassword, password } = formField;
 
-  const handleChange = event => {
+  function clearForm() {
+    setFormField(defaultFormFields);
+    alert('Usuario criado om sucesso');
+  }
+
+  function handleChange(event) {
     const { name, value } = event.target;
     setFormField({ ...formField, [name]: value });
-  };
+  }
 
-  const handleSubmit = async event => {
+  async function handleSubmit(event) {
     event.preventDefault();
     if (password != confirmPassword) {
       alert('As senhas não são compatíveis');
+      return;
     }
-
     try {
-      const res = await createAuthUserWithEmailAndPassword(email, password);
-      res.user.displayName = displayName;
-    } catch (err) {
-      console.log('Erro ao ccriar usuário ');
+      const { user } = await createAuthUserWithEmailAndPassword(
+        email,
+        password
+      );
+
+      await createUserDocFromAuth(user, { displayName });
+      clearForm();
+    } catch (error) {
+      if (error.code == 'auth/email-already-in-use') {
+        alert('Email já cadastrado, tente outro');
+      } else {
+        console.log('Erro ao criar usuário ', error);
+      }
     }
-  };
+  }
 
   return (
     <div className="sing-up">
@@ -98,5 +112,5 @@ const SignUpForm = () => {
       </form>
     </div>
   );
-};
+}
 export default SignUpForm;

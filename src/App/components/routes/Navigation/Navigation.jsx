@@ -13,11 +13,11 @@ const Navigation = () => {
         <img src={crwnLogo} alt="" />
           </Link>
         <div className="nav-links-container">
-          <Link className="nav-links" to="/shop">
-            Shop
+          <Link className="nav-links" to="/">
+            Home
           </Link>
           <Link className="nav-links" to="/shop">
-            pega
+            Shop
           </Link>
           <Link className="nav-links" to="/shop">
             Shop

@@ -5,13 +5,19 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 25px;
-
+  margin-top: 25px;
+  
   .logo-container {
     height: 100%;
     width: 70px;
     display: flex;
     align-items: center;
     padding-left: 50px;
+
+    & img {
+      height: 100%;
+      width: 70px;
+    }
   }
 
   .nav-links-container {

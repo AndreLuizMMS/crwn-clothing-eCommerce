@@ -3,3 +3,75 @@
   align-items: center;
   justify-content: center;
 }
+
+  $sub-color: grey;
+$main-color: black;
+
+
+ .sign-up {
+  display: flex;
+  flex-direction: column;
+    
+  & header {
+    margin-bottom: 3.5rem;
+    
+    & h2 {
+      font-size: 2rem;
+    }
+    & p {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column; 
+
+  & label {
+    display: block;
+    margin-bottom: 1rem;
+
+  }
+
+  & input {
+    background-color: #afafaf;
+    color: black;
+    font-weight: 600;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    border-bottom: 1px solid $sub-color;
+    box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.3);
+    margin-bottom: 2rem;
+
+
+      &:focus {
+        outline: none;
+        box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.6);
+      }
+    }
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+    
+    & button {
+    padding: 10px 15px;
+    background:#636363;
+    color: white;
+    font-weight: 600;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    padding: 10px 0px  ;
+      
+    &:hover {
+      box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.4);
+    }
+    
+  }
+}

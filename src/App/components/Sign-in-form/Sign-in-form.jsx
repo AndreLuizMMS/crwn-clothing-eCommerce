@@ -1,32 +1,62 @@
 import { signInWithGooglePopUp } from '../../../utils/FireBase/FireBase';
 
+import './Sign-in-form.scss';
+
+import logo from '../../../assets/Google__G__Logo.png';
+import { useState } from 'react';
+
+const defaultFormFields = {
+  email: '',
+  password: ''
+};
+
 const SignInForm = () => {
+  const [formField, setFormField] = useState(defaultFormFields);
+  const { email, password } = formField;
+
   const logGoogleUserPopUp = async () => {
     console.log('cheogu');
     const { user } = await signInWithGooglePopUp();
     const userDocRef = await createUserDocFromAuth(user);
   };
 
+  function clearForm() {
+    setFormField(defaultFormFields);
+  }
+
+  function handleChange(event) {
+    const { name, value } = event.target;
+    setFormField({ ...formField, [name]: value });
+  }
+
+  async function handleSubmit(event) {
+    clearForm();
+  }
+
   return (
     <div className="sign-in">
-      <form onSubmit={() => {}}>
+      <header>
         <h2> Já tenho uma conta </h2>
         <p>Entrar com email e senha</p>
+      </header>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="email">Email</label>
+        <input type="text" name="email" value={email} onChange={handleChange} />
 
-        <div className="email-container">
-          <label htmlFor="email">Email</label>
-          <input type="text" name="email" />
-        </div>
-
-        <div className="password-container">
-          <label htmlFor="password">Senha</label>
-          <input type="text" name="password" />
-        </div>
+        <label htmlFor="password">Senha</label>
+        <input
+          type="password"
+          name="password"
+          value={password}
+          onChange={handleChange}
+        />
+        <button className="login-btn">Entrar</button>
       </form>
-      <div className="button-container">
-        <button type="submit">Entrar</button>
-        <button onClick={logGoogleUserPopUp}>Entrar com Google</button>
-      </div>
+
+      <button onClick={logGoogleUserPopUp} className="google-btn">
+        Entrar com Google
+        <img src={logo} className="google-logo" alt="" />
+      </button>
     </div>
   );
 };

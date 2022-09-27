@@ -52,60 +52,51 @@ function SignUpForm() {
   }
 
   return (
-    <div className="sing-up">
+    <div className="sign-up">
       <form onSubmit={handleSubmit}>
-        <h2> Não tenho uma conta </h2>
-        <p>Cadastrar com email e senha</p>
+        <header>
+          <h2> Não tenho uma conta </h2>
+          <p>Cadastrar com email e senha</p>
+        </header>
 
-        <div className="displayName-container">
-          <label>
-            Nome
-            <input
-              required
-              type="text"
-              name="displayName"
-              onChange={handleChange}
-              value={displayName}
-            />
-          </label>
+        <div className="form-container">
+          <label>Nome</label>
+          <input
+            required
+            type="text"
+            name="displayName"
+            onChange={handleChange}
+            value={displayName}
+          />
+
+          <label>Email</label>
+          <input
+            required
+            type="email"
+            name="email"
+            onChange={handleChange}
+            value={email}
+          />
+
+          <label>Senha</label>
+          <input
+            required
+            type="password"
+            name="password"
+            onChange={handleChange}
+            value={password}
+          />
+
+          <label>Confirmar Senha</label>
+          <input
+            required
+            type="password"
+            name="confirmPassword"
+            onChange={handleChange}
+            value={confirmPassword}
+          />
         </div>
 
-        <div className="email-container">
-          <label>
-            Email
-            <input
-              required
-              type="email"
-              name="email"
-              onChange={handleChange}
-              value={email}
-            />
-          </label>
-        </div>
-        <div className="password-container">
-          <label>
-            Senha
-            <input
-              required
-              type="password"
-              name="password"
-              onChange={handleChange}
-              value={password}
-            />
-          </label>
-        </div>
-        <div className="confirmPassword">
-          <label>
-            Confirmar Senha
-            <input
-              required
-              type="password"
-              name="confirmPassword"
-              onChange={handleChange}
-              value={confirmPassword}
-            />
-          </label>
-        </div>
         <div className="button-container">
           <button type="submit">Cadastrar</button>
         </div>

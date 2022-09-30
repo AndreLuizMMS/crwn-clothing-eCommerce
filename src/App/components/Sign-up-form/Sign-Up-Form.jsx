@@ -20,7 +20,6 @@ function SignUpForm() {
 
   function clearForm() {
     setFormField(defaultFormFields);
-    alert('Usuario criado om sucesso');
   }
 
   function handleChange(event) {
@@ -31,7 +30,7 @@ function SignUpForm() {
   async function handleSubmit(event) {
     event.preventDefault();
     if (password != confirmPassword) {
-      alert('As senhas não são compatíveis');
+      alert('As senhas não são compatíveis'); 
       return;
     }
     try {
@@ -44,7 +43,6 @@ function SignUpForm() {
       clearForm();
     } catch (error) {
       if (error.code == 'auth/email-already-in-use') {
-        alert('Email já cadastrado, tente outro');
       } else {
         console.log('Erro ao criar usuário ', error);
       }

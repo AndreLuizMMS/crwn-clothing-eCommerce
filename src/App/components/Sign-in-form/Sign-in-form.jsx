@@ -1,4 +1,8 @@
-import { signInWithGooglePopUp } from '../../../utils/FireBase/FireBase';
+import {
+  signInWithGooglePopUp,
+  signInWithEmailAndPass,
+  createUserDocFromAuth
+} from '../../../utils/FireBase/FireBase.js';
 
 import './Sign-in-form.scss';
 
@@ -15,7 +19,6 @@ const SignInForm = () => {
   const { email, password } = formField;
 
   const logGoogleUserPopUp = async () => {
-    console.log('cheogu');
     const { user } = await signInWithGooglePopUp();
     const userDocRef = await createUserDocFromAuth(user);
   };
@@ -30,7 +33,13 @@ const SignInForm = () => {
   }
 
   async function handleSubmit(event) {
-    clearForm();
+    event.preventDefault();
+    try {
+      const userLogin = await signInWithEmailAndPass(email, password);
+      console.log(userLogin);
+    } catch (erro) {
+      console.log('user sign in failed', error);
+    }
   }
 
   return (
@@ -50,9 +59,10 @@ const SignInForm = () => {
           value={password}
           onChange={handleChange}
         />
-        <button className="login-btn">Entrar</button>
+        <button type="submit" className="login-btn">
+          Entrar
+        </button>
       </form>
-
       <button onClick={logGoogleUserPopUp} className="google-btn">
         Entrar com Google
         <img src={logo} className="google-logo" alt="" />

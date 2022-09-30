@@ -13,7 +13,7 @@ $main-color: black;
   flex-direction: column;
     
   & header {
-    margin-bottom: 3.5rem;
+    margin-bottom: 3rem;
     
     & h2 {
       font-size: 2rem;
@@ -45,7 +45,7 @@ $main-color: black;
     border-radius: 5px;
     border-bottom: 1px solid $sub-color;
     box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.3);
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 
 
       &:focus {
@@ -67,7 +67,8 @@ $main-color: black;
     border: none;
     border-radius: 5px;
     width: 100%;
-    padding: 10px 0px  ;
+    padding: 10px 0px;
+    margin-top: 1rem;
       
     &:hover {
       box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.4);

@@ -17,6 +17,7 @@ const defaultFormFields = {
 const SignInForm = () => {
   const [formField, setFormField] = useState(defaultFormFields);
   const { email, password } = formField;
+  const [erro, setErro] = useState('');
 
   const logGoogleUserPopUp = async () => {
     const { user } = await signInWithGooglePopUp();
@@ -37,8 +38,15 @@ const SignInForm = () => {
     try {
       const userLogin = await signInWithEmailAndPass(email, password);
       console.log(userLogin);
-    } catch (erro) {
-      console.log('user sign in failed', error);
+      clearForm();
+      setErro('');
+    } catch (error) {
+      console.log(error);
+      let wrongPass = 'FirebaseError: Firebase: Error (auth/wrong-password).';
+      if (error == wrongPass) setErro('Senha Incorreta');
+
+      let wrongEmail = 'FirebaseError: Firebase: Error (auth/invalid-email).';
+      if (error == wrongEmail) setErro('Email inválido');
     }
   }
 
@@ -49,11 +57,19 @@ const SignInForm = () => {
         <p>Entrar com email e senha</p>
       </header>
       <form onSubmit={handleSubmit}>
+        <span>{erro}</span>
         <label htmlFor="email">Email</label>
-        <input type="text" name="email" value={email} onChange={handleChange} />
+        <input
+          required
+          type="text"
+          name="email"
+          value={email}
+          onChange={handleChange}
+        />
 
         <label htmlFor="password">Senha</label>
         <input
+          required
           type="password"
           name="password"
           value={password}

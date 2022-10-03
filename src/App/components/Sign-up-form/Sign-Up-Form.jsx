@@ -17,6 +17,7 @@ const defaultFormFields = {
 function SignUpForm() {
   const [formField, setFormField] = useState(defaultFormFields);
   const { displayName, email, confirmPassword, password } = formField;
+  const [erro, setErro] = useState('');
 
   function clearForm() {
     setFormField(defaultFormFields);
@@ -30,7 +31,7 @@ function SignUpForm() {
   async function handleSubmit(event) {
     event.preventDefault();
     if (password != confirmPassword) {
-      alert('As senhas não são compatíveis'); 
+      alert('As senhas não são compatíveis');
       return;
     }
     try {
@@ -41,11 +42,12 @@ function SignUpForm() {
 
       await createUserDocFromAuth(user, { displayName });
       clearForm();
+      setErro('')
     } catch (error) {
-      if (error.code == 'auth/email-already-in-use') {
-      } else {
-        console.log('Erro ao criar usuário ', error);
-      }
+      let pass6Char = 'FirebaseError: Firebase: Password should be at least 6 characters (auth/weak-password).' 
+      if (error == pass6Char) {
+        setErro('A senha deve concter 6 caracteres');
+      } 
     }
   }
 
@@ -77,6 +79,7 @@ function SignUpForm() {
           />
 
           <label>Senha</label>
+          <span>{erro}</span>
           <input
             required
             type="password"

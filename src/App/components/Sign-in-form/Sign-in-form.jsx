@@ -1,13 +1,14 @@
+import { useState, useContext } from 'react';
+
 import {
   signInWithGooglePopUp,
   signInWithEmailAndPass,
   createUserDocFromAuth
 } from '../../../utils/FireBase/FireBase.js';
-
-import './Sign-in-form.scss';
+import { UserContext } from '../../../Context/UserContext';
 
 import logo from '../../../assets/Google__G__Logo.png';
-import { useState } from 'react';
+import './Sign-in-form.scss';
 
 const defaultFormFields = {
   email: '',
@@ -18,6 +19,8 @@ const SignInForm = () => {
   const [formField, setFormField] = useState(defaultFormFields);
   const { email, password } = formField;
   const [erro, setErro] = useState('');
+
+  const { setCurrentUser } = useContext(UserContext);
 
   const logGoogleUserPopUp = async () => {
     const { user } = await signInWithGooglePopUp();
@@ -36,8 +39,9 @@ const SignInForm = () => {
   async function handleSubmit(event) {
     event.preventDefault();
     try {
-      const userLogin = await signInWithEmailAndPass(email, password);
-      console.log(userLogin);
+      const { user } = await signInWithEmailAndPass(email, password);
+      setCurrentUser(user);
+
       clearForm();
       setErro('');
     } catch (error) {

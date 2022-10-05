@@ -1,9 +1,11 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 
 import {
   createAuthUserWithEmailAndPassword,
   createUserDocFromAuth
 } from '../../../utils/FireBase/FireBase';
+
+import { UserContext } from '../../../Context/UserContext';
 
 import './Sin-Up-form.scss';
 
@@ -18,6 +20,8 @@ function SignUpForm() {
   const [formField, setFormField] = useState(defaultFormFields);
   const { displayName, email, confirmPassword, password } = formField;
   const [erro, setErro] = useState('');
+
+  const { setCurrentUser } = useContext(UserContext);
 
   function clearForm() {
     setFormField(defaultFormFields);
@@ -39,15 +43,16 @@ function SignUpForm() {
         email,
         password
       );
-
+      setCurrentUser(user);
       await createUserDocFromAuth(user, { displayName });
       clearForm();
-      setErro('')
+      setErro('');
     } catch (error) {
-      let pass6Char = 'FirebaseError: Firebase: Password should be at least 6 characters (auth/weak-password).' 
+      let pass6Char =
+        'FirebaseError: Firebase: Password should be at least 6 characters (auth/weak-password).';
       if (error == pass6Char) {
         setErro('A senha deve concter 6 caracteres');
-      } 
+      }
     }
   }
 

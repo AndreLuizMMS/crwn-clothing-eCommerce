@@ -14,14 +14,3 @@ body {
   flex-wrap: wrap;
   justify-content: space-between;
 }
-
-a {
-  text-decoration: none;
-  font-size: 1.4rem;
-  font-weight: 900;
-  color: rgb(56, 56, 56);
-
-  &:hover {
-    color: black;
-  }
-}

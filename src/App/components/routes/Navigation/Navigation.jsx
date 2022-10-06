@@ -8,12 +8,7 @@ import './Navigation.scss';
 import crwnLogo from '../../../../assets/crown.svg';
 
 const Navigation = () => {
-  const { currentUser, setCurrentUser } = useContext(UserContext);
-
-  async function signOutHandler() {
-    const res = await SignOutUser();
-    setCurrentUser(null);
-  }
+  const { currentUser } = useContext(UserContext);
 
   return (
     <Fragment>
@@ -29,7 +24,7 @@ const Navigation = () => {
             Shop
           </Link>
           {currentUser ? (
-            <a href="#" onClick={signOutHandler}>
+            <a href="#" onClick={SignOutUser}>
               Sign-out
             </a>
           ) : (

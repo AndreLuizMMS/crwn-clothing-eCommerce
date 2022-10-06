@@ -5,8 +5,6 @@ import {
   createUserDocFromAuth
 } from '../../../utils/FireBase/FireBase';
 
-import { UserContext } from '../../../Context/UserContext';
-
 import './Sin-Up-form.scss';
 
 const defaultFormFields = {
@@ -20,8 +18,6 @@ function SignUpForm() {
   const [formField, setFormField] = useState(defaultFormFields);
   const { displayName, email, confirmPassword, password } = formField;
   const [erro, setErro] = useState('');
-
-  const { setCurrentUser } = useContext(UserContext);
 
   function clearForm() {
     setFormField(defaultFormFields);
@@ -43,8 +39,10 @@ function SignUpForm() {
         email,
         password
       );
+
       setCurrentUser(user);
       await createUserDocFromAuth(user, { displayName });
+      
       clearForm();
       setErro('');
     } catch (error) {

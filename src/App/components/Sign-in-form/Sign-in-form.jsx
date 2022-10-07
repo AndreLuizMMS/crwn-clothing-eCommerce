@@ -21,8 +21,7 @@ const SignInForm = () => {
   const [erro, setErro] = useState('');
 
   const logGoogleUserPopUp = async () => {
-     await signInWithGooglePopUp();
-    
+    await signInWithGooglePopUp();
   };
 
   function clearForm() {
@@ -58,7 +57,7 @@ const SignInForm = () => {
         <p>Entrar com email e senha</p>
       </header>
       <form onSubmit={handleSubmit}>
-        <span>{erro}</span>
+        <span className="erro">{erro}</span>
         <label htmlFor="email">Email</label>
         <input
           required

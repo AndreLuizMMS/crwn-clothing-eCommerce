@@ -82,7 +82,7 @@ function SignUpForm() {
           />
 
           <label>Senha</label>
-          <span>{erro}</span>
+          <span className='error'>{erro}</span>
           <input
             required
             type="password"

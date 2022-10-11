@@ -4,6 +4,9 @@ import { Outlet, Link } from 'react-router-dom';
 import { UserContext } from '../../../../Context/UserContext';
 import { SignOutUser } from '../../../../utils/FireBase/FireBase';
 
+import CartDropDown from '../../Cart Dropdown/CartDropdown';
+import CartIcon from '../../cart icon/Cart-Icon';
+
 import './Navigation.scss';
 import crwnLogo from '../../../../assets/crown.svg';
 
@@ -17,9 +20,6 @@ const Navigation = () => {
           <img src={crwnLogo} alt="" />
         </Link>
         <div className="nav-links-container">
-          <Link className="nav-links" to="/">
-            Home
-          </Link>
           <Link className="nav-links" to="/shop">
             Shop
           </Link>
@@ -32,7 +32,9 @@ const Navigation = () => {
               Login
             </Link>
           )}
+          <CartIcon />
         </div>
+        <CartDropDown />
       </div>
       <Outlet />
     </Fragment>

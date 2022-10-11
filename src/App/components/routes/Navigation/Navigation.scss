@@ -23,6 +23,8 @@
   .nav-links-container {
     align-items: center;
     padding: 10px;
+    display: flex;
+    align-items: center;
 
     .nav-links {
       padding-inline: 15px;
@@ -33,7 +35,7 @@
 
 a {
   text-decoration: none;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 900;
   color: rgb(56, 56, 56);
 

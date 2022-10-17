@@ -42,7 +42,7 @@ function SignUpForm() {
 
       setCurrentUser(user);
       await createUserDocFromAuth(user, { displayName });
-      
+
       clearForm();
       setErro('');
     } catch (error) {
@@ -82,7 +82,7 @@ function SignUpForm() {
           />
 
           <label>Senha</label>
-          <span className='error'>{erro}</span>
+          <span className="error">{erro}</span>
           <input
             required
             type="password"
@@ -101,7 +101,7 @@ function SignUpForm() {
           />
         </div>
 
-        <div className="button-container">
+        <div className="sign-up-btn-container">
           <button type="submit">Cadastrar</button>
         </div>
       </form>

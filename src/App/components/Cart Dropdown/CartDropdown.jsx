@@ -1,4 +1,5 @@
-import { useContext, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { useContext } from 'react';
 
 import { CartContext } from '../../../Context/CartContext';
 
@@ -8,7 +9,7 @@ import CartItem from '../Cart-Item/Cart-Item';
 import './CartDropdown.scss';
 
 const CartDropDown = () => {
-  const { cartItems } = useContext(CartContext);
+  const { cartItems, setIsCartOpen } = useContext(CartContext);
 
   return (
     <div className="cart-dropdown-container">
@@ -17,7 +18,15 @@ const CartDropDown = () => {
           return <CartItem key={item.id} cartItem={item} />;
         })}
       </div>
-      <Button> Finalizar </Button>
+      <Link to="/checkout">
+        <Button
+          onClick={() => {
+            setIsCartOpen(false);
+          }}
+        >
+          Finalizar
+        </Button>
+      </Link>
     </div>
   );
 };

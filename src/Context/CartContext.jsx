@@ -1,8 +1,8 @@
 import { createContext, useState, useEffect } from 'react';
 
 const addCartItem = (cartItems, itemToAdd) => {
-  //verifica se o item ja existe no carinho
-  const existingItem = cartItems.find(item => item.id === itemToAdd.id); //retorna um booleano
+  //verifica se o item ja existe no car/shopinho
+  const existingItem = cartItems.find(item => item.id === itemToAdd.id); //retorna o item ou undefined
 
   if (existingItem) {
     //incrementa quant do item existente
@@ -10,7 +10,6 @@ const addCartItem = (cartItems, itemToAdd) => {
       item.id === itemToAdd.id ? { ...item, quantity: item.quantity + 1 } : item
     );
   }
-
   // se não for repetido, so retorna o array com um novo item
   return [...cartItems, { ...itemToAdd, quantity: 1 }];
 };
@@ -20,6 +19,7 @@ export const CartContext = createContext({
   setIsOpen: () => {},
   cartItems: [],
   addItemToCart: () => {},
+  removeItemToCart: () => {},
   cartCount: 0
 });
 

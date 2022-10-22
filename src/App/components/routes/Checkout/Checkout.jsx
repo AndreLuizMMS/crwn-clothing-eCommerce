@@ -2,16 +2,15 @@ import { useContext, useEffect } from 'react';
 
 import { CartContext } from '../../../../Context/CartContext';
 
-import ProductCard from '../../Checkout product card/ProductCard';
+import CheckoutCart from '../../Checkout Cart/CheckoutCart';
 
 const Checkout = () => {
   const { cartItems } = useContext(CartContext);
 
   return (
     <>
-      <h1>CheckoutPage</h1>
       <div>
-        <ProductCard />
+        <CheckoutCart />
       </div>
     </>
   );

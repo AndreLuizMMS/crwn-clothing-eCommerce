@@ -24,7 +24,7 @@ const CartDropDown = () => {
             setIsCartOpen(false);
           }}
         >
-          Finalizar
+          Ver Carrinho
         </Button>
       </Link>
     </div>

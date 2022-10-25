@@ -1,24 +1,29 @@
 import { createContext, useState, useEffect } from 'react';
 
-import SHOP_DATA from '../shopData.js';
 import { getCategoriesAndDocuments } from '../utils/FireBase/FireBase';
 
-export const ProductContext = createContext({
-  products: []
+export const CategoriesContext = createContext({
+  categoriesMap: []
 });
 
-export function ProductsProvider({ children }) {
+export function CategoriesProvider({ children }) {
+  const [categoriesMap, setCategoriesMap] = useState({});
+
   useEffect(() => {
     const getCategoriesMap = async () => {
       const categoryMap = await getCategoriesAndDocuments();
       console.log(categoryMap);
+      setCategoriesMap(categoryMap);
     };
+
     getCategoriesMap();
   }, []);
 
-  const [products, setProducts] = useState([]);
-  const value = { products };
+  const value = { categoriesMap };
   return (
-    <ProductContext.Provider value={value}>{children}</ProductContext.Provider>
+    <CategoriesContext.Provider value={value}>
+      {children}
+    </CategoriesContext.Provider>
   );
 }
+ 

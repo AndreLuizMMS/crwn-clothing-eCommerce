@@ -1,5 +1,7 @@
 import { useState, useContext } from 'react';
 
+import { UserContext } from '../../../Context/UserContext';
+
 import {
   createAuthUserWithEmailAndPassword,
   createUserDocFromAuth
@@ -14,10 +16,12 @@ const defaultFormFields = {
   password: ''
 };
 
-function SignUpForm() {
+const SignUpForm = () => {
   const [formField, setFormField] = useState(defaultFormFields);
   const { displayName, email, confirmPassword, password } = formField;
   const [erro, setErro] = useState('');
+
+  const { currentUser } = useContext(UserContext);
 
   function clearForm() {
     setFormField(defaultFormFields);
@@ -31,7 +35,7 @@ function SignUpForm() {
   async function handleSubmit(event) {
     event.preventDefault();
     if (password != confirmPassword) {
-      alert('As senhas não são compatíveis');
+      setErro('As senhas não são compatíveis');
       return;
     }
     try {
@@ -40,11 +44,10 @@ function SignUpForm() {
         password
       );
 
-      setCurrentUser(user);
-      await createUserDocFromAuth(user, { displayName });
-
       clearForm();
       setErro('');
+      await createUserDocFromAuth(user, { displayName });
+      //
     } catch (error) {
       let pass6Char =
         'FirebaseError: Firebase: Password should be at least 6 characters (auth/weak-password).';
@@ -107,5 +110,5 @@ function SignUpForm() {
       </form>
     </div>
   );
-}
+};
 export default SignUpForm;

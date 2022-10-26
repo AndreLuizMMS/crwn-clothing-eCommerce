@@ -1,4 +1,5 @@
 import { useContext, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 import { CartContext } from '../../../Context/CartContext';
 
@@ -8,7 +9,6 @@ import './CheckoutCart.scss';
 
 const CheckoutCart = () => {
   const { cartItems, cartPrice } = useContext(CartContext);
-
 
   return (
     <div className="checkout-container">
@@ -33,7 +33,16 @@ const CheckoutCart = () => {
         return <CheckoutCartItem key={item.id} cartItems={item} />;
       })}
       <span className="total">
-        {cartPrice ? `${cartPrice} $` : 'Carrinho Vazio'}
+        {cartPrice ? (
+          `${cartPrice} $`
+        ) : (
+          <>
+            Carrinho Vazio
+            <Link to="/shop">
+              <h2 className="buy-now">Comprar já &gt; </h2>
+            </Link>
+          </>
+        )}
       </span>
     </div>
   );

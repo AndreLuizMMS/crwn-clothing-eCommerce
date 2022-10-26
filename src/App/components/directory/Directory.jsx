@@ -5,6 +5,7 @@ const Directoy = ({ categories }) => {
     <div className="categories-container">
       {categories.map(category => (
         <CategoryContainer
+          route={category.route}
           title={category.title}
           bgImg={category.imageUrl}
           key={category.id}

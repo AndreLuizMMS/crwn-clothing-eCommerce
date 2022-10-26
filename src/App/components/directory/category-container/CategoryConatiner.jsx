@@ -1,6 +1,7 @@
+import { Link } from 'react-router-dom';
 import './CaterContainer.scss';
 
-const CategoryContainer = ({ title, bgImg }) => {
+const CategoryContainer = ({ title, bgImg, route }) => {
   return (
     <div className="category-container">
       <div
@@ -9,10 +10,12 @@ const CategoryContainer = ({ title, bgImg }) => {
           backgroundImage: `url(${bgImg})`
         }}
       >
-        <div className="category-body-container">
-          <h2>{title}</h2>
-          <p>Comprar já</p>
-        </div>
+        <Link to={route}>
+          <div className="category-body-container">
+            <h2>{title}</h2>
+            <p>Comprar já</p>
+          </div>
+        </Link>
       </div>
     </div>
   );

@@ -3,7 +3,7 @@ import { createContext, useState, useEffect } from 'react';
 import { getCategoriesAndDocuments } from '../utils/FireBase/FireBase';
 
 export const CategoriesContext = createContext({
-  categoriesMap: []
+  categoriesMap: {}
 });
 
 export function CategoriesProvider({ children }) {
@@ -12,7 +12,6 @@ export function CategoriesProvider({ children }) {
   useEffect(() => {
     const getCategoriesMap = async () => {
       const categoryMap = await getCategoriesAndDocuments();
-      console.log(categoryMap);
       setCategoriesMap(categoryMap);
     };
 
@@ -26,4 +25,3 @@ export function CategoriesProvider({ children }) {
     </CategoriesContext.Provider>
   );
 }
- 

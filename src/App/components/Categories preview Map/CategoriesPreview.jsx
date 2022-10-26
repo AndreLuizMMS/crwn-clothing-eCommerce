@@ -1,7 +1,7 @@
 import { useContext } from 'react';
-import { CategoriesContext } from '../../../../Context/CategoriesContext';
+import { CategoriesContext } from '../../../Context/CategoriesContext';
 
-import CategoryPreview from '../../Category Preview/CategoryPreview';
+import CategoryPreviewCards from '../Category Preview Card/CategoryPreviewCards';
 
 const CategoriesPreview = () => {
   const { categoriesMap } = useContext(CategoriesContext);
@@ -11,7 +11,8 @@ const CategoriesPreview = () => {
       {Object.keys(categoriesMap).map(title => {
         const products = categoriesMap[title];
         return (
-          <CategoryPreview key={title} title={title} productsArr={products} />
+          //prettier-ignore
+          <CategoryPreviewCards key={title} title={title} productsArr={products} />
         );
       })}
     </>

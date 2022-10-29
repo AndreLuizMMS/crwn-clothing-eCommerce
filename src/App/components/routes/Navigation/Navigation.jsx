@@ -34,7 +34,7 @@ const Navigation = () => {
               Login
             </Link>
           )}
-          <CartIcon onClick={() => setIsCartOpen(!isCartOpen)} />
+          <CartIcon onClick={setIsCartOpen} />
         </div>
         {isCartOpen ? <CartDropDown /> : false}
       </div>

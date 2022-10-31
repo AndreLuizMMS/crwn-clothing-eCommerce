@@ -1,9 +1,10 @@
 import { Fragment, useContext } from 'react';
 import { Outlet, Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
-import { UserContext } from '../../../../Context/UserContext';
 import { CartContext } from '../../../../Context/CartContext';
 import { SignOutUser } from '../../../../utils/FireBase/FireBase';
+import { selectCurrentUser } from '../../../../Store/user/user.selector';
 
 import CartDropDown from '../../Cart Dropdown/CartDropdown';
 import CartIcon from '../../cart icon/Cart-Icon';
@@ -12,7 +13,8 @@ import './Navigation.scss';
 import crwnLogo from '../../../../assets/crown.svg';
 
 const Navigation = () => {
-  const { currentUser } = useContext(UserContext);
+  // const { currentUser } = useContext(UserContext);
+  const currentUser = useSelector(selectCurrentUser);
   const { isCartOpen, setIsCartOpen } = useContext(CartContext);
 
   return (

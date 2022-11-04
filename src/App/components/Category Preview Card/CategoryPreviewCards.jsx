@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+
 import ItemCard from '../routes/Shop/ItemCard/ItemCard';
 import './Category-Preview-Cards.scss';
 

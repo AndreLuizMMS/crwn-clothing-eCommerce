@@ -13,8 +13,7 @@ import './Navigation.scss';
 import crwnLogo from '../../../../assets/crown.svg';
 
 const Navigation = () => {
-  // const { currentUser } = useContext(UserContext);
-  const currentUser = useSelector(selectCurrentUser);
+  const { currentUser } = useSelector(selectCurrentUser);
   const { isCartOpen, setIsCartOpen } = useContext(CartContext);
 
   return (

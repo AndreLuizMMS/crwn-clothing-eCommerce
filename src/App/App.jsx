@@ -10,7 +10,7 @@ import {
   SignOutUser
 } from '../utils/FireBase/FireBase';
 
-import { setCurrentUser } from '../Store/user/user.action';
+import { setCurrentUser } from '../utils/Reducer/reducer.utils';
 
 //Components
 import Home from './components/routes/Home/Home';
@@ -23,7 +23,7 @@ import './App.scss';
 
 const App = () => {
   const dispatch = useDispatch();
-  
+
   useEffect(() => {
     const unsubscribe = onAuthStateChangedListener(user => {
       if (user) {

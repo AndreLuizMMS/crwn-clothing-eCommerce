@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { CartContext } from '../../../Context/CartContext';
 
 import CheckoutCartItem from '../Checkout Cart Item/CheckoutCartItem';
+import PaymentForm from '../payment-form/PaymentForm';
 
 import './CheckoutCart.scss';
 
@@ -32,9 +33,12 @@ const CheckoutCart = () => {
       {cartItems.map(item => {
         return <CheckoutCartItem key={item.id} cartItems={item} />;
       })}
-      <span className="total">
+      <div className="total">
         {cartPrice ? (
-          `${cartPrice} $`
+          <div className="purchase-container">
+            <span>{`${cartPrice} $`}</span>
+            <PaymentForm />
+          </div>
         ) : (
           <>
             Carrinho Vazio
@@ -43,7 +47,7 @@ const CheckoutCart = () => {
             </Link>
           </>
         )}
-      </span>
+      </div>
     </div>
   );
 };

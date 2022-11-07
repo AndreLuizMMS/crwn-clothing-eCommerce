@@ -108,7 +108,7 @@ export const CartProvider = ({ children }) => {
     dispatch(
       createAction('SET_CART_ITEMS', {
         cartItems: newCartItems,
-        cartTotal: newCartTotal,
+        cartPrice: newCartTotal,
         cartCount: newCartCount
       })
     );

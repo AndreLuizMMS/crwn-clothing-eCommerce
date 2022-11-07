@@ -18,6 +18,7 @@ import Shop from './components/routes/Shop/Shop';
 import Navigation from './components/routes/Navigation/Navigation';
 import Auth from './components/routes/Auth/Auth';
 import Checkout from './components/routes/Checkout/Checkout';
+import PaymentForm from './components/payment-form/PaymentForm';
 
 import './App.scss';
 

@@ -1,5 +1,8 @@
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
 
 import { CartContext } from '../../../Context/CartContext';
 
@@ -10,6 +13,9 @@ import './CheckoutCart.scss';
 
 const CheckoutCart = () => {
   const { cartItems, cartPrice } = useContext(CartContext);
+  const stripePromise = loadStripe(
+    'pk_test_51M1YDOH8J7vimQRgyJynkr0ATu4gCW0mgmMNLUyGlxEu9hiGFdedFtiMQyV696RX7keATViGDaQpBLnMJ48FCPp100it58vTzO'
+  );
 
   return (
     <div className="checkout-container">
@@ -35,9 +41,14 @@ const CheckoutCart = () => {
       })}
       <div className="total">
         {cartPrice ? (
-          <div className="purchase-container">
-            <span>{`${cartPrice} $`}</span>
-            <PaymentForm />
+          <div className='price'>
+              <span>{`${cartPrice} $`}</span>
+            <div className="unavaliable">
+              <h3> UNAVALIABLE </h3>
+              <div  className="purchase-container">
+                <PaymentForm />
+              </div>
+            </div>
           </div>
         ) : (
           <>

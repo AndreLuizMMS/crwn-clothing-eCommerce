@@ -2,6 +2,8 @@ import { createContext, useEffect, useReducer } from 'react';
 
 import { createAction } from '../utils/Reducer/reducer.utils';
 
+import {CATEGORIES_ACTION_TYPES} from '../Store/categories/category.type'
+
 import {
   createUserDocFromAuth,
   onAuthStateChangedListener,
@@ -12,6 +14,9 @@ export const UserContext = createContext({
   currentUser: null,
   setCurrentUser: () => {}
 });
+
+export const setCurrentUser = categoriesMap =>
+createAction(CATEGORIES_ACTION_TYPES.SET_CATEGORIES_MAP, categoriesMap);
 
 export const USER_ACTION_TYPES = {
   SET_CURRENT_USER: 'SET_CURRENT_USER'

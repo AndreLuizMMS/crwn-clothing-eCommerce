@@ -7,18 +7,17 @@ import ItemCard from '../routes/Shop/ItemCard/ItemCard';
 
 import './Category-Shop.scss';
 
-const CategoryShop = () => {
+const CategoryShop = ({ categoryMap }) => {
   const { category } = useParams();
-  const { categories } = useSelector(categoriesReducer);
 
-  const categoriesMap = categories.categoriesMap[category];
+  const Category = categoryMap[category];
 
   return (
     <>
       <h1>{category.toUpperCase()}</h1>
       <div className="category-shop">
-        {categoriesMap &&
-          categoriesMap.map(product => {
+        {Category &&
+          Category.map(product => {
             return <ItemCard products={product} key={product.id} />;
           })}
       </div>

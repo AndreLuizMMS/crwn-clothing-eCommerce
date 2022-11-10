@@ -10,7 +10,7 @@ import {
   SignOutUser
 } from '../utils/FireBase/FireBase';
 
-import { setCurrentUser } from '../utils/Reducer/reducer.utils';
+import { setCurrentUser } from '../Context/UserContext';
 
 //Components
 import Home from './components/routes/Home/Home';

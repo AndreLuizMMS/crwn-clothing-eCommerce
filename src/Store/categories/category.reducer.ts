@@ -9,7 +9,7 @@ const CATEGORIES_INITIAL_STATE = {
 
 export const categoriesReducer = (
   state = CATEGORIES_INITIAL_STATE,
-  action = {}
+  action = {} as setCategories
 ) => {
   const { type, payload } = action;
 
@@ -20,5 +20,3 @@ export const categoriesReducer = (
       return state;
   }
 };
-
-

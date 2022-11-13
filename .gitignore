@@ -1,6 +1,7 @@
 node_modules
 vite.config.js
 .env
+clone-GraphQL
 # Local Netlify folder
 .netlify
 

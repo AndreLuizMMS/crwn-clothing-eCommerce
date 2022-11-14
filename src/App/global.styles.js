@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+import { createGlobalStyle } from 'styled-components';
+
+const GlobalStyle = createGlobalStyle`
 *{
   font-family:'inter';  
   box-sizing: border-box;
@@ -7,6 +9,7 @@
 body {
   background-color: #dadada ;
   padding: 10px;
+
 }
 
 .categories-container {
@@ -15,3 +18,5 @@ body {
   flex-wrap: wrap;
   justify-content: space-between;
 }
+`;
+export default GlobalStyle;

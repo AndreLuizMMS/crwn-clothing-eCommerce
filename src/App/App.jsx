@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, lazy, Suspense } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { Routes, Route } from 'react-router-dom';
@@ -13,14 +13,18 @@ import {
 import { setCurrentUser } from '../Context/UserContext';
 
 //Components
-import Home from './components/routes/Home/Home';
-import Shop from './components/routes/Shop/Shop';
-import Navigation from './components/routes/Navigation/Navigation';
-import Auth from './components/routes/Auth/Auth';
-import Checkout from './components/routes/Checkout/Checkout';
-import PaymentForm from './components/payment-form/PaymentForm';
+import Spinner from './components/Spinner/Spinner';
+const Home = lazy(() => import('./components/routes/Home/Home'));
+const Shop = lazy(() => import('./components/routes/Shop/Shop'));
+const Navigation = lazy(() =>
+  import('./components/routes/Navigation/Navigation')
+);
+const Auth = lazy(() => import('./components/routes/Auth/Auth'));
+const Checkout = lazy(() => import('./components/routes/Checkout/Checkout'));
+const PaymentForm = lazy(() => import('./components/payment-form/PaymentForm'));
 
-import './App.scss';
+// import './App.scss';
+import GlobalStyle from './global.styles';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -37,7 +41,8 @@ const App = () => {
   }, []);
 
   return (
-    <div>
+    <Suspense fallback={<Spinner />}>
+      <GlobalStyle />
       <Routes>
         <Route path="/" element={<Navigation />}>
           <Route index element={<Home />} />
@@ -46,7 +51,7 @@ const App = () => {
           <Route path="/checkout" element={<Checkout />} />
         </Route>
       </Routes>
-    </div>
+    </Suspense>
   );
 };
 
